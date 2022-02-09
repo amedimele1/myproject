@@ -1,0 +1,30 @@
+#!/bin/bash
+# Run this as a script
+# create an ubuntu-18.04 ec2 instance in aws
+sudo hostname docker
+sudo apt update -y
+sudo apt install docker.io -y
+sudo usermod -aG docker ariella  ( replace ariella by ubuntu if using aws ) 
+
+# Install java as jenkins dependency
+sudo apt install openjdk-11-jdk -y
+# install jenkis in ubuntu:
+curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo tee \
+    /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+
+echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
+    https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+    /etc/apt/sources.list.d/jenkins.list > /dev/null
+
+sudo apt-get update
+sudo apt-get install jenkins -y
+sudo systemctl start jenkins
+sudo sudo ufw allow 8080
+sudo ufw allow OpenSSH
+sudo ufw enable
+sudo ufw status
+sudo useradd jenkins 
+sudo usermod -aG docker jenkins 
+echo "jenkins  ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/jenkins 
+docker --version
+#sudo su - jenkins
