@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mywebapp
+  labels:
+    name: mywebapp
+spec:
+ containers:
+ - image: mylandmarktech/maven-web-app:latest
+   name: mywebapp1
+   ports:
+   - containerPort: 8080
