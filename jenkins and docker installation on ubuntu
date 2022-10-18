@@ -42,6 +42,6 @@ network:
       addresses: [192.168.0.240/24]
       gateway4: 192.168.0.1
       nameservers:
-      addresses: [192.168.0.32] this the ip of my dns server. if you don't have a dns server put the primary and secondary ip of your local dns separated by colon
+       addresses: [192.168.0.32] this the ip of my dns server. if you don't have a dns server put the primary and secondary ip of your local dns separated by colon
 # sudo netplan try and press "enter" if there is no error or just run " sudo netplan apply" to save the changes
 =========================================================================================================================================================================
